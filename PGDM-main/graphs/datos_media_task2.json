@@ -1,0 +1,17 @@
+[
+    {"Type": "static", "Chunk": 1, "TP": "289 ms", "SpeedUp": 1.97, "Eficiencia": 0.98},
+    {"Type": "static", "Chunk": 2, "TP": "338 ms", "SpeedUp": 1.69, "Eficiencia": 0.84},
+    {"Type": "static", "Chunk": 4, "TP": "331 ms", "SpeedUp": 1.72, "Eficiencia": 0.86},
+    {"Type": "static", "Chunk": 8, "TP": "324 ms", "SpeedUp": 1.76, "Eficiencia": 0.88},
+    {"Type": "static", "Chunk": 16, "TP": "324 ms", "SpeedUp": 1.76, "Eficiencia": 0.88},
+    {"Type": "dynamic", "Chunk": 1, "TP": "328 ms", "SpeedUp": 1.74, "Eficiencia": 0.87},
+    {"Type": "dynamic", "Chunk": 2, "TP": "343 ms", "SpeedUp": 1.67, "Eficiencia": 0.835},
+    {"Type": "dynamic", "Chunk": 4, "TP": "335 ms", "SpeedUp": 1.71, "Eficiencia": 0.855},
+    {"Type": "dynamic", "Chunk": 8, "TP": "326 ms", "SpeedUp": 1.75, "Eficiencia": 0.875},
+    {"Type": "dynamic", "Chunk": 16, "TP": "323 ms", "SpeedUp": 1.77, "Eficiencia": 0.885},
+    {"Type": "guided", "Chunk": 1, "TP": "298 ms", "SpeedUp": 1.92, "Eficiencia": 0.96},
+    {"Type": "guided", "Chunk": 2, "TP": "313 ms", "SpeedUp": 1.83, "Eficiencia": 0.915},
+    {"Type": "guided", "Chunk": 4, "TP": "323 ms", "SpeedUp": 1.77, "Eficiencia": 0.885},
+    {"Type": "guided", "Chunk": 8, "TP": "311 ms", "SpeedUp": 1.84, "Eficiencia": 0.92},
+    {"Type": "guided", "Chunk": 16, "TP": "311 ms", "SpeedUp": 1.84, "Eficiencia": 0.92}
+]

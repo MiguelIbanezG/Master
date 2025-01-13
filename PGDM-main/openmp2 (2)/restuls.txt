@@ -1,0 +1,9 @@
+#pragma omp parallel for schedule( static ) private(x, pr, pi, newRe, newIm, oldRe, oldIm, i, z, brightness)
+
+#pragma omp parallel for schedule( static ) private(pr, pi, newRe, newIm, oldRe, oldIm, i, z, brightness)
+
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=test \
+  -Dsonar.projectName='test' \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.token=sqp_52b73ee90bebb3e3ec08f4db8ec3293ffb641e54
