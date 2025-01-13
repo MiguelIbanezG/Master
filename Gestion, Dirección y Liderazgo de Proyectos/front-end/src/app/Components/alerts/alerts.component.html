@@ -1,0 +1,14 @@
+<div class="alerts-container">
+  <div class="alerts-header">
+    <span class="material-symbols-outlined alert-icon">warning</span>
+    <h2>{{ "Alarms.Alarm" | translate }}</h2>
+  </div>
+  <ul class="alert-list">
+    <li *ngFor="let alert of alerts">
+      <span class="alert-message">{{ alert.message }}</span>
+      <span *ngIf="alert.timestamp" class="alert-timestamp">{{
+        alert.timestamp
+      }}</span>
+    </li>
+  </ul>
+</div>

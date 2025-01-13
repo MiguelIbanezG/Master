@@ -1,0 +1,77 @@
+.s359x640 #jim-mobile {
+  width: 383.9999999999998px;
+}
+.s359x640 #jim-mobile.landscape {
+  width: 664.0px;
+  height: 399.9999999999998px;
+}
+.s359x640 #jim-case {
+  width: 383.9999999999998px;
+  height: 680.0px;
+}
+.s359x640 #jim-container.portrait {
+  position: absolute;
+  top: 20px;
+  left: 12px;
+  width: 359.9999999999998px;
+  height: 640.0px;
+}
+.s359x640 #jim-container.landscape {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  width: 640.0px;
+  height: 359.9999999999998px;
+}
+.s359x640 #jim-case #jim-case-top-left {
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+.s359x640 #jim-case #jim-case-top-center {
+  width: 343.9999999999998px;
+  height: 20px;
+  background-size: 359.9999999999998px 20px;
+  overflow: hidden;
+}
+.s359x640 #jim-case #jim-case-top-right {
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+.s359x640 #jim-case #jim-case-center-left {
+  width: 12px;
+  height: 640.0px;
+  background-size: 12px 640.0px;
+}
+.s359x640 #jim-case #jim-case-center-center {
+  width: 359.9999999999998px;
+  height: 640.0px;
+}
+.s359x640 #jim-case #jim-case-center-right {
+  width: 12px;
+  height: 640.0px;
+  background-size: 12px 640.0px;
+}
+.s359x640 #jim-case #jim-case-bottom-left {
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+.s359x640 #jim-case #jim-case-bottom-center {
+  width: 343.9999999999998px;
+  height: 20px;
+  background-size: 359.9999999999998px 20px;
+}
+.s359x640 #jim-case #jim-case-bottom-right {
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+.s359x640 #jim-case.landscape {
+  transform-origin: 50% 28.235294% 0;
+}

@@ -1,0 +1,161 @@
+7.1 Actividades Específicas en la Evaluación de Sistemas Interactivos ---------------------------
+Clasificación de métodos de evaluación según criterio “lugar de evaluación”
+	1) Laboratorio
+	2) Entorno de trabajo
+Clasificación de métodos de evaluación según criterio “técnica de comprobación”
+	1) Métodos de inspección (no intervienen usuarios finales)
+	2) Métodos de indagación (intervienen usuarios finales, interaccionando con ellos)
+	3) Métodos de test (intervienen usuarios finales, pero haciéndoles pruebas/tests)
+Clasificación de métodos de evaluación según criterio “automatización”
+	1) Automáticos
+	2) Manuales
+Clasificación de métodos de evaluación según criterio “tipo de participantes”
+	1) Con usuarios e implicados
+	2) Sin usuarios ni implicados
+Modelos de proceso y pautas de evaluación
+7.2 Técnicas de Evaluación de la Usabilidad -----------------------------------------
+INSPECCIÓN. Técnicas:
+	Evaluación heurística
+	Recorrido cognitivo (cognitive walkthrough)
+	Inspección de estándares
+Evaluación heurística
+Recorrido cognitivo
+Inspección de estándares
+INDAGACIÓN. Técnicas:
+	Observación de campo (field observation)
+	Grupo de discusión dirigido (focus group)
+	Entrevistas
+	Cuestionarios
+	Registro de uso
+TEST. Técnicas:
+	Medida de las prestaciones
+	Pensar en voz alta (thinking aloud)
+	Ordenación de tarjetas (card sorting)
+Métodos de evaluación en el ciclo de vida
+Clasificación (según coste)
+7.3 Experimentación con Usuarios-------------------------------------------------------------
+Factores importantes
+	Factores importantes para el diseño de un estudio de usabilidad
+		1) Selección de participantes
+		2) Número de participantes
+		3) Muestras de un grupo de participantes o de varios grupos
+		4) Compensación
+		5) Identificación de variables independientes y dependientes
+	1) Selección de participantes
+	2) Número de participantes
+		Tolerancia de errores. Intervalo de confianza 
+	3) Muestras de un grupo de participantes o de varios grupos
+		Medidas intra-sujetos (within-subjects) o relacionadas
+		Medidas inter-sujetos (between-subjects) o independientes
+	4) Compensación (en medidas intrasujeto)
+	5) Identificación de variables independientes y dependientes
+Estadística Descriptiva
+	Tipos de datos
+	Intervalos de confianza para promedios
+	Comparaciones de medias
+		Pruebas de contraste de hipótesis
+	Variantes 
+		1) Medidas inter-sujetos (prueba t)
+		2) Medidas intra-sujetos (prueba t)
+		3) Medidas inter-sujetos (prueba chi-cuadrado)
+	1) Medidas inter-sujetos (prueba t)
+	2) Medidas intra-sujetos (prueba t)
+	3) Medidas inter-sujetos (prueba chi-cuadrado)
+	Relación entre variables
+		Coeficiente de correlación
+	Presentación gráfica de datos (barras, líneas, ...)
+Planificación de una evaluación/estudio de usabilidad
+	Debe determinar 
+		1) Objetivos
+		2) Tecnología de recogida de datos, presupuesto, tiempo, etc.
+	Métricas apropiadas para diferentes escenarios
+	Resumen (en el contexto de la práctica 3)
+Métricas de rendimiento
+	Principales métricas de rendimiento
+		1) Éxito de tareas
+		2) Tiempo de tareas
+		3) Errores de tareas
+		4) Eficiencia de tareas
+		5) Facilidad de dominio
+	1) Éxito de tareas
+		Dos tipos
+			Éxito binario
+			Éxito con niveles
+	2) Tiempo de tareas
+	3) Errores de tareas
+	4) Eficiencia de tareas
+		Diferentes medidas de eficiencia en una tarea
+			Tiempo
+			Esfuerzo
+			Desorientación
+			Combinación de éxito y tiempo
+		Esfuerzo para completar una tarea
+			Cognitivo 
+			Físico 
+		Desorientación (lostness)
+			Métrica L
+		Combinación de éxito y tiempo
+	5) Facilidad de dominio (learnability)
+Métricas subjetivas
+	Preguntas en recogida de datos
+		1) Preguntas con respuestas según una escala
+			Escala de Likert
+			Escala diferencial semántica
+		2) Preguntas con respuestas abiertas
+	Momento de recogida de datos
+		Al final de una tarea (post-tarea)
+		Al final de un estudio o sesión (post-sesión)
+	Respuestas de usuarios 
+		1) Orales
+		2) Papel
+		3) On-line
+	Pautas generales para escalas
+	Análisis de datos
+Métricas subjetivas. Evaluación post-tarea
+	Técnicas
+		1) Facilidad de uso. Es 1 pregunta con respuesta Likert/Diferencial 
+		2) Cuestionario ASQ (After-Scenario Questionnaire). Para conjunto de tareas. Son 3 preguntas con respuesta Likert de 7 opciones.
+		3) Medida de expectativas. Se compara antes y después. Gráfico de "promote, ..."
+	Correlación de métricas de rendimiento y métricas subjetivas post-tarea
+		Estudio de Tullis, 2006. Alta correlación entre métricas de rendimiento y métricas subjetivas post-tarea
+Métricas subjetivas. Evaluación post-sesión
+	Técnicas
+		1) Agregación de tareas individuales
+		2) SUS (System Usability Scale). Público, pero obligado mencionar origen. Es el MEJOR (estudio de Tullis).
+		3) CSUQ (Computer System Usability Questionnaire)
+		4) QUIS (Questionnaire for User Interface Satisfaction)
+		5) USE (Usefulness, Satisfaction, and Ease of Use Questionnaire)
+	Gráficos radar para USE o CSUQ
+	SUS es más exacto
+Métricas subjetivas web
+	Aplicables en una evaluación web post-tarea o post-sesión
+	Técnicas
+		1) WAMMI (Website Analysis and Measurement Inventory). Buena BD de resultados (como también en muchos cuestionarios).
+		2) ACSI (American Customer Satisfaction Index)
+Datos considerados en usabilidad web
+	1) Análisis de datos web habituales (web analytics)
+	2) Análisis de tasas de seguimiento de vínculos (click-through)
+	3) Análisis de tasas de abandono (drop-off)
+	4) Pruebas A/B
+Métricas psicológicas y de comportamiento
+	1) Expresiones de usuarios 
+	2) Rastreo ocular (eye tracking)
+	3) Detectores de emociones 
+	4) Detectores de estrés y otros aspectos
+Métodos de evaluación en UX
+Combinación de métricas
+	Dos modos de combinación de métricas (ejecución de varias tareas por cada usuario):
+		1) Combinación de varias métricas de usuario
+			A) Basada en un objetivo combinado
+			B) Basada en porcentajes
+		2) Comparación de datos con resultados ideales, o de expertos
+Métricas en ordenación de tarjetas
+	Existen 2 variantes
+		A) Ordenación abierta
+		B) Ordenación cerrada
+	Existen métricas para estimar la idoneidad (fitness) de la agrupación resultado
+	A) Ordenación abierta
+		1) HCA (Hierarchical Cluster Analysis)
+		2) MDS (Multidimensional Scaling)
+	B) Ordenación cerrada
+---------------------------------------------------------------------------------

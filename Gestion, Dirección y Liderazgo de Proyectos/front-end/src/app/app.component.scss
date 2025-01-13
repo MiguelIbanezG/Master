@@ -1,0 +1,16 @@
+#v4-app-footer-container {
+  background-color: black;
+  padding: 0px;
+}
+
+::ng-deep footer {
+  > * {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  footer {
+    display: none;
+  }
+}

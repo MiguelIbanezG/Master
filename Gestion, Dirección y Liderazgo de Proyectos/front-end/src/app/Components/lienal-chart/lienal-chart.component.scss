@@ -1,0 +1,48 @@
+.fan-chart-container,
+.door-chart-container,
+.window-chart-container,
+.light-chart-container {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  position: relative;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 10;
+}
+
+.close-button mat-icon {
+  color: #555;
+  font-size: 24px;
+}
+
+.close-button:hover mat-icon {
+  color: #000;
+}

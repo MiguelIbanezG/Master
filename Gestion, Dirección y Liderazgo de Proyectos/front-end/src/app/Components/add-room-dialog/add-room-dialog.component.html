@@ -1,0 +1,340 @@
+<h2 mat-dialog-title>{{ "Dialog.EditRoom" | translate }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="roomForm">
+    <!-- General Information Section -->
+    <section class="info-section">
+      <h3>{{ "Dialog.GeneralInformation" | translate }}</h3>
+
+      <hr class="section-divider" />
+
+      <div class="form-row">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "Dialog.Name" | translate }}</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "Dialog.Size" | translate }} (m²)</mat-label>
+          <input matInput type="number" formControlName="size" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "Dialog.CO2Level" | translate }}</mat-label>
+          <input matInput type="number" formControlName="co2" readonly />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "Dialog.PeopleCount" | translate }}</mat-label>
+          <input matInput type="number" formControlName="people" readonly />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "Dialog.Temperature" | translate }} (°C)</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="temperature"
+            readonly
+          />
+        </mat-form-field>
+
+        <div *ngIf="!isNewRoom" class="generate-button-container">
+          <button
+            mat-raised-button
+            class="add-button"
+            (click)="generateRandomValues()"
+          >
+            {{ "Dialog.GenerateRandomValues" | translate }}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elements Section -->
+    <section class="elements-section">
+      <h3>{{ "Dialog.RoomElements" | translate }}</h3>
+
+      <hr class="section-divider" />
+
+      <!-- Doors -->
+      <div formArrayName="doors">
+        <h4>{{ "Dialog.Doors" | translate }}: {{ doors.length }}</h4>
+
+        <!-- Encabezado de la tabla -->
+        <div class="doors-table-header">
+          <div class="table-cell">ID</div>
+          <div class="table-cell">{{ "Dialog.State" | translate }}</div>
+          <div class="table-cell">{{ "Dialog.ConnectedDoor" | translate }}</div>
+          <div class="table-cell">
+            {{ "DeleteConfirmationDialog.ConfirmDelete" | translate }}
+          </div>
+        </div>
+
+        <!-- Filas de datos -->
+        <div
+          *ngFor="let door of doors.controls; let i = index"
+          [formGroupName]="i"
+          class="doors-table-row"
+        >
+          <!-- Columna de ID -->
+          <div class="table-cell">
+            <span>{{ door.value.id }}</span>
+          </div>
+
+          <!-- Columna de Estado (con toggle) -->
+          <div class="table-cell">
+            <mat-slide-toggle
+              color="primary"
+              class="custom-green-toggle"
+              formControlName="isOpen"
+              [checked]="door.value.isOpen"
+            >
+              <span
+                class="status-text"
+                [ngClass]="{
+                  'text-success': door.value.isOpen,
+                  'text-danger': !door.value.isOpen
+                }"
+              >
+                {{
+                  door.value.isOpen
+                    ? ("Dialog.Open" | translate)
+                    : ("Dialog.Close" | translate)
+                }}
+              </span>
+            </mat-slide-toggle>
+          </div>
+
+          <!-- Columna de Conexión (con select para elegir otra habitación) -->
+          <div class="table-cell">
+            <mat-form-field class="select" *ngIf="!door.value.anotherRoomId">
+              <mat-label>{{ "Dialog.ConnectDoor" | translate }}</mat-label>
+              <mat-select formControlName="anotherRoomId">
+                <mat-option
+                  *ngFor="let room of availableRooms"
+                  [value]="room.id"
+                >
+                  {{ room.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <span *ngIf="door.value.anotherRoomId">
+              <ng-container *ngIf="roomNames$ | async as roomNames">
+                {{ roomNames[door.value.anotherRoomId] }}
+              </ng-container>
+            </span>
+          </div>
+
+          <!-- Columna de Eliminar -->
+          <div class="table-cell">
+            <button mat-icon-button color="warn" (click)="removeDoor(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Botón para añadir más puertas -->
+        <div class="button-container">
+          <button mat-raised-button class="add-button" (click)="addDoor()">
+            {{ "Dialog.AddDoor" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- Windows -->
+      <div formArrayName="windows">
+        <h4>{{ "Dialog.Windows" | translate }}: {{ windows.length }}</h4>
+
+        <!-- Encabezado de la tabla -->
+        <div class="doors-table-header">
+          <div class="table-cell">ID</div>
+          <div class="table-cell">Estado</div>
+          <div class="table-cell">Eliminar</div>
+        </div>
+
+        <div
+          *ngFor="let window of windows.controls; let i = index"
+          [formGroupName]="i"
+          class="doors-table-row"
+        >
+          <div class="table-cell">
+            <span>{{ window.value.id }}</span>
+          </div>
+
+          <div class="table-cell">
+            <mat-slide-toggle
+              color="primary"
+              class="custom-green-toggle"
+              formControlName="isOpen"
+              [checked]="window.value.isOpen"
+            >
+              <span
+                class="status-text"
+                [ngClass]="{
+                  'text-success': window.value.isOpen,
+                  'text-danger': !window.value.isOpen
+                }"
+              >
+                {{
+                  window.value.isOpen
+                    ? ("Dialog.Open" | translate)
+                    : ("Dialog.Close" | translate)
+                }}
+              </span>
+            </mat-slide-toggle>
+          </div>
+
+          <div class="table-cell">
+            <button mat-icon-button color="warn" (click)="removeWindow(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="button-container">
+          <button
+            mat-raised-button
+            color="warn"
+            class="add-button"
+            (click)="addWindow()"
+          >
+            {{ "Dialog.AddWindow" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- Fans -->
+      <div formArrayName="fans">
+        <h4>{{ "Dialog.Fans" | translate }}: {{ fans.length }}</h4>
+
+        <div class="doors-table-header">
+          <div class="table-cell">ID</div>
+          <div class="table-cell">Estado</div>
+          <div class="table-cell">Eliminar</div>
+        </div>
+
+        <div
+          *ngFor="let fan of fans.controls; let i = index"
+          [formGroupName]="i"
+          class="doors-table-row"
+        >
+          <div class="table-cell">
+            <span>{{ fan.value.id }}</span>
+          </div>
+
+          <div class="table-cell">
+            <mat-slide-toggle
+              color="primary"
+              class="custom-green-toggle"
+              formControlName="isOpen"
+              [checked]="fan.value.isOpen"
+            >
+              <span
+                class="status-text"
+                [ngClass]="{
+                  'text-success': fan.value.isOpen,
+                  'text-danger': !fan.value.isOpen
+                }"
+              >
+                {{
+                  fan.value.isOpen
+                    ? ("Dialog.On" | translate)
+                    : ("Dialog.Off" | translate)
+                }}
+              </span>
+            </mat-slide-toggle>
+          </div>
+
+          <div class="table-cell">
+            <button mat-icon-button color="warn" (click)="removeFan(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="button-container">
+          <button mat-raised-button class="add-button" (click)="addFan()">
+            {{ "Dialog.AddFan" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- Lights -->
+      <div formArrayName="lights">
+        <h4>{{ "Dialog.Lights" | translate }}: {{ lights.length }}</h4>
+
+        <div class="doors-table-header">
+          <div class="table-cell">ID</div>
+          <div class="table-cell">Estado</div>
+          <div class="table-cell">Eliminar</div>
+        </div>
+
+        <div
+          *ngFor="let light of lights.controls; let i = index"
+          [formGroupName]="i"
+          class="doors-table-row"
+        >
+          <div class="table-cell">
+            <span>{{ light.value.id }}</span>
+          </div>
+
+          <div class="table-cell">
+            <mat-slide-toggle
+              color="primary"
+              class="custom-green-toggle"
+              formControlName="isOpen"
+              [checked]="light.value.isOpen"
+            >
+              <span
+                class="status-text"
+                [ngClass]="{
+                  'text-success': light.value.isOpen,
+                  'text-danger': !light.value.isOpen
+                }"
+              >
+                {{
+                  light.value.isOpen
+                    ? ("Dialog.On" | translate)
+                    : ("Dialog.Off" | translate)
+                }}
+              </span>
+            </mat-slide-toggle>
+          </div>
+
+          <div class="table-cell">
+            <button mat-icon-button color="warn" (click)="removeLight(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="button-container">
+          <button mat-raised-button class="add-button" (click)="addLight()">
+            {{ "Dialog.AddLight" | translate }}
+          </button>
+        </div>
+      </div>
+    </section>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">
+    {{ "Dialog.Cancel" | translate }}
+  </button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="roomForm.invalid"
+    (click)="onSubmit()"
+  >
+    {{ "Dialog.Save" | translate }}
+  </button>
+</mat-dialog-actions>

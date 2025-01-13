@@ -1,0 +1,145 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin: 30px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  font-family: "Times New Roman", Times, serif;
+  padding: 10px 15px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-weight: bold;
+  font-size: 15px;
+
+  &:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+  }
+}
+
+.rooms-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+  margin-left: 30px;
+  margin-right: 50px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.room-card {
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  border-color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 220px;
+  max-width: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.room-card:hover {
+  transform: scale(1.05);
+}
+
+.room-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
+  animation: rotate 20s linear infinite;
+}
+
+.room-details {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20%;
+}
+
+.room-details button {
+  color: white;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.room-details button:hover {
+  transform: scale(1.05);
+}
+
+.edit {
+  background-color: #000000;
+}
+
+.edit:hover {
+  background-color: #218838;
+}
+
+.delete {
+  background-color: #000000;
+}
+
+.delete:hover {
+  background-color: #da1414;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+
+h3 {
+  font-size: 22px;
+  margin-top: 25px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+p {
+  font-size: 22px;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: -10px;
+}

@@ -1,0 +1,88 @@
+<nav>
+  <div class="navbar-menu">
+    <div class="navbar-title">
+      <span class="navbar-title-text">HOME CONTROL</span>
+      <span class="vertical-line"></span>
+      <!-- Línea vertical -->
+      <span (click)="back()" class="material-icons home-icon">home</span>
+    </div>
+
+    <!-- Icono de ajustes en la esquina derecha -->
+    <div class="settings">
+      <div (click)="openAlerts()">
+        <span
+          class="material-symbols-outlined settings-icon"
+          [ngClass]="{ blinking: hasNewAlerts }"
+          >warning</span
+        >
+      </div>
+      <div (click)="toggleSettingsMenu()">
+        <span class="material-icons settings-icon">settings</span>
+      </div>
+    </div>
+
+    <!-- Menú desplegable de configuración -->
+    <div class="settings-menu" *ngIf="settingsMenuVisible">
+      <ul>
+        <li
+          (mouseenter)="showLanguagesMenu = true; clearLanguageTimeout()"
+          (mouseleave)="startLanguageTimeout()"
+        >
+          {{ "NavBar.Languages" | translate }}
+          <!-- Lista de idiomas que se muestra al hacer clic -->
+          <div
+            class="languages-menu"
+            *ngIf="showLanguagesMenu"
+            (mouseleave)="startLanguageTimeout()"
+          >
+            <ul>
+              <li (click)="selectLanguage('ch'); hideLanguagesMenu()">
+                {{ "NavBar.Chinese" | translate }}
+              </li>
+              <li (click)="selectLanguage('es'); hideLanguagesMenu()">
+                {{ "NavBar.Spanish" | translate }}
+              </li>
+              <li (click)="selectLanguage('en'); hideLanguagesMenu()">
+                {{ "NavBar.English" | translate }}
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li
+          (mouseenter)="showThemeMenu = true; clearThemeTimeout()"
+          (mouseleave)="startThemeTimeout()"
+        >
+          {{ "NavBar.Theme" | translate }}
+          <!-- Submenú de tema oscuro/claro -->
+          <div
+            class="languages-menu"
+            *ngIf="showThemeMenu"
+            (mouseleave)="startThemeTimeout()"
+          >
+            <ul>
+              <li (click)="setTheme('dark'); hideThemeMenu()">
+                {{ "NavBar.Dark" | translate }}
+              </li>
+              <li (click)="setTheme('light'); hideThemeMenu()">
+                {{ "NavBar.Light" | translate }}
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li (click)="exportExcell()">
+          {{ "Home.ExportExcel" | translate }}
+        </li>
+        <li (click)="fileInput.click()">
+          {{ "Home.ImportExcel" | translate }}
+        </li>
+        <input
+          #fileInput
+          type="file"
+          accept=".xlsx"
+          style="display: none"
+          (change)="importExcell($event)"
+        />
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  application:
+    name: project
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: ${DATABASE_USER:root}
+    password: ${DATABASE_PASSWORD:}
+    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:team3Test}?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+  sql:
+    init:
+      mode: always

@@ -1,0 +1,240 @@
+<div *ngIf="room" class="room-details-container">
+  <div class="header-container">
+    <span class="material-symbols-outlined back-arrow" (click)="back()"
+      >arrow_back</span
+    >
+    <h2 class="title-text">{{ room.name }}</h2>
+    <div class="icon-container">
+      <button
+        mat-raised-button
+        class="add-button"
+        (click)="generateRandomValues()"
+      >
+        {{ "Dialog.GenerateRandomValues" | translate }}
+      </button>
+      <span
+        class="material-symbols-outlined alerts"
+        [ngClass]="{ blinking: hasNewAlerts }"
+        (click)="openAlerts()"
+        >warning</span
+      >
+      <span class="material-symbols-outlined edit-icon" (click)="editRoom(room)"
+        >edit_square</span
+      >
+      <span class="material-symbols-outlined delete-icon" (click)="deleteRoom()"
+        >delete</span
+      >
+    </div>
+  </div>
+  <hr class="section-divider" />
+
+  <div class="card-container">
+    <!-- Size Card -->
+    <div class="card">
+      <div class="card-content">
+        <p class="titles-size">
+          <strong>{{ "Room.Size" | translate }}</strong>
+        </p>
+        <span class="material-symbols-outlined size-icon"> aspect_ratio </span>
+        <p class="data-size">{{ room.size }} m²</p>
+      </div>
+    </div>
+
+    <!-- Temperature Card -->
+    <div class="card-temp" (click)="openTemperatureChartDialog()">
+      <div class="card-content">
+        <p class="titles-size">
+          <strong>{{ "Room.Temperature" | translate }}</strong>
+        </p>
+        <span class="material-symbols-outlined th-icon"> thermostat </span>
+        <p class="data-size">{{ room.temperature }}°C</p>
+      </div>
+    </div>
+
+    <!-- CO2 Card -->
+    <div class="card-co2" (click)="openCo2ChartDialog()" [style.backgroundColor]="co2Color">
+      <div class="card-content">
+        <p class="titles-size">
+          <strong>{{ "Room.CO2Level" | translate }}</strong>
+        </p>
+        <span class="material-symbols-outlined co2-icon"> co2 </span>
+        <p class="data-size">{{ room.co2 }} ppm</p>
+      </div>
+    </div>
+
+    <!-- People Count Card -->
+    <div class="card-people" (click)="openPeopleChartDialog()">
+      <div class="card-content">
+        <p class="titles-people">
+          <strong>{{ "Room.PeopleCount" | translate }}</strong>
+        </p>
+        <span class="material-symbols-outlined people-icon"> group </span>
+        <p class="data-size">{{ room.people }}</p>
+      </div>
+    </div>
+
+    <!-- Doors Card -->
+
+    <div class="card-door" (click)="openDoorsChartDialog()">
+      <div class="card-content">
+        <p class="titles-size">
+          <strong
+            >{{ "Room.Doors" | translate }}: {{ room.doors.length }}</strong
+          >
+        </p>
+
+        <span class="material-symbols-outlined th-icon">room_preferences</span>
+
+        <table class="data_door">
+          <tr>
+            <th>{{ "Room.DoorID" | translate }}</th>
+
+            <th>{{ "Dialog.ConnectedDoor" | translate }}</th>
+
+            <th>{{ "Room.Status" | translate }}</th>
+          </tr>
+
+          <tr
+            *ngFor="let door of room.doors; let i = index"
+            [ngClass]="{ par: i % 2 === 0, impar: i % 2 !== 0 }"
+          >
+            <td>{{ door.id }}</td>
+
+            <td>
+              <ng-container *ngIf="roomNames$ | async as roomNames">
+                {{
+                  roomNames[door.anotherRoomId] || ("Room.Outside" | translate)
+                }}
+              </ng-container>
+            </td>
+
+            <td
+              (click)="this.updateDoor(door); $event.stopPropagation()"
+              [ngClass]="door.isOpen ? 'open' : 'closed'"
+            >
+              <span class="material-symbols-outlined">{{
+                door.isOpen ? "door_open" : "door_front"
+              }}</span>
+
+              {{
+                door.isOpen
+                  ? ("Room.Open" | translate)
+                  : ("Room.Close" | translate)
+              }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Windows Card -->
+    <div class="card-window" (click)="openWindowsChartDialog()">
+      <div class="card-content">
+        <p class="titles-size">
+          <strong
+            >{{ "Room.Windows" | translate }}: {{ room.windows.length }}</strong
+          >
+        </p>
+        <span class="material-symbols-outlined th-icon">window</span>
+        <table class="data2">
+          <tr>
+            <th>{{ "Room.WindowID" | translate }}</th>
+            <th>{{ "Room.Status" | translate }}</th>
+          </tr>
+          <tr
+            *ngFor="let window of room.windows; let i = index"
+            [ngClass]="{ par: i % 2 === 0, impar: i % 2 !== 0 }"
+          >
+            <td>{{ window.id }}</td>
+            <td
+              (click)="this.updateWindow(window); $event.stopPropagation()"
+              [ngClass]="window.isOpen ? 'open' : 'closed'"
+            >
+              <span class="material-symbols-outlined">{{
+                window.isOpen ? "window_open" : "window_closed"
+              }}</span>
+              {{
+                window.isOpen
+                  ? ("Room.Open" | translate)
+                  : ("Room.Close" | translate)
+              }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Lights Card -->
+    <div class="card-light" (click)="openLightsChartDialog()">
+      <div class="card-content">
+        <p class="titles-size">
+          <strong
+            >{{ "Room.Lights" | translate }}: {{ room.lights.length }}</strong
+          >
+        </p>
+        <span class="material-symbols-outlined th-icon">lightbulb</span>
+        <table class="data2">
+          <tr>
+            <th>{{ "Room.LightID" | translate }}</th>
+            <th>{{ "Room.Status" | translate }}</th>
+          </tr>
+          <tr
+            *ngFor="let light of room.lights; let i = index"
+            [ngClass]="{ par: i % 2 === 0, impar: i % 2 !== 0 }"
+          >
+            <td>{{ light.id }}</td>
+            <td
+              (click)="this.updateLight(light); $event.stopPropagation()"
+              [ngClass]="light.isOpen ? 'open' : 'closed'"
+            >
+              <span class="material-symbols-outlined">{{
+                light.isOpen ? "light" : "light_off"
+              }}</span>
+              {{
+                light.isOpen
+                  ? ("Room.On" | translate)
+                  : ("Room.Off" | translate)
+              }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Fans Card -->
+    <div class="card-fan" (click)="openFansChartDialog()">
+      <div class="card-content">
+        <p class="titles-fan">
+          <strong
+            >{{ "Room.AirConditioners" | translate }}:
+            {{ room.fans.length }}</strong
+          >
+        </p>
+        <span class="material-symbols-outlined fan-icon">toys_fan</span>
+        <table class="data2">
+          <tr>
+            <th>{{ "Room.FanID" | translate }}</th>
+            <th>{{ "Room.Status" | translate }}</th>
+          </tr>
+          <tr
+            *ngFor="let fan of room.fans; let i = index"
+            [ngClass]="{ par: i % 2 === 0, impar: i % 2 !== 0 }"
+          >
+            <td>{{ fan.id }}</td>
+            <td
+              (click)="this.updateFan(fan); $event.stopPropagation()"
+              [ngClass]="fan.isOpen ? 'open' : 'closed'"
+            >
+              <span class="material-symbols-outlined">{{
+                fan.isOpen ? "mode_fan" : "mode_fan_off"
+              }}</span>
+              {{
+                fan.isOpen ? ("Room.On" | translate) : ("Room.Off" | translate)
+              }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

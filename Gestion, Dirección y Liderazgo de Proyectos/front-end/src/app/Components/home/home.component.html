@@ -1,0 +1,55 @@
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    [placeholder]="'Home.SearchRooms' | translate"
+    (input)="searchRooms()"
+  />
+  <button class="button" (click)="createRoom()">
+    {{ "Home.CreateRoom" | translate }}
+  </button>
+  <!-- <button class="button" (click)="fileInput.click()">
+    {{ "Home.ImportExcel" | translate }}
+  </button>
+  <input
+    #fileInput
+    type="file"
+    accept=".xlsx"
+    style="display: none"
+    (change)="importExcell($event)"
+  />
+  <button class="button" (click)="exportExcell()">{{ "Home.ExportExcel" | translate }}</button> -->
+</div>
+
+<div class="rooms-container">
+  <div
+    class="room-card"
+    [routerLink]="['/room', room.id]"
+    *ngFor="let room of filteredRooms"
+  >
+      <div
+      class="room-background"
+      [ngStyle]="{
+        'background-image': 'url(' + getRoomImage(room.id) + ')',
+        'background-color': getRoomFilterColor(room.id)
+      }"
+    ></div>
+
+    <div class="room-details">
+      <h2>{{ room.name }}</h2>
+      <h3>{{ "Home.RoomID" | translate }}: {{ room.id }}</h3>
+      <p>{{ "Home.Size" | translate }}: {{ room.size }} m²</p>
+      <div class="button-container">
+        <button
+          class="delete"
+          (click)="deleteRoom(room.id); $event.stopPropagation()"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button class="edit" (click)="editRoom(room); $event.stopPropagation()">
+          <span class="material-symbols-outlined edit-icon">edit_square</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+pag. 37, intervalos de confianza, tiene que ver con el archivo de excel. para los dos primeros sheets.
+
+***********
+sheet3:
+¿Que ocurre con esas medias, es estadisitcamente significativas... diferentes?
+
+Promedio muestral: Nasa/Wikipedia
+** Hipotesis nulas : las medias son iguales.
+Las pruebas-T (intersujetos) las medidas independientes son disjuntos, diferentes participantes.
+Se puede rechazar la hipotesis nula, y quedar con la hipotesis contraria.
+
+
+
+
+
+
+Sheet: 
+Simulacion 1
+Simular variable aleatoria que tiene media de 3, desviación 2
+
+(simular datos : exitos de tareas....), comparaciones o simulaciones con datos reales
+
+Sheet simulacion2: pruebas-T (pag. 38)
+Si el intervalo de confianza no son disjuntos...
+
+
+Cuando hay mas de dos medidas (Anovas), no necesaria en entrega
+
+pag. 39:
+
+Pruebas-T (intrasujetos):
+
+Consiste en que cada participante realiza tareas diferentes...pag.40
+--- Si el promedio de las diferencias es 0, debe tener una distribución normal.
+El intervalo de confianza.... 
+
+Pruebas Chi Cuadrad:
+para medir tiempos...
+
+pag. 41 revisar chi cuadrado.

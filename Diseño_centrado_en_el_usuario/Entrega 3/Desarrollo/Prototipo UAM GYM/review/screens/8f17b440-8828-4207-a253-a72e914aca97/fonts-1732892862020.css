@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Odor Mean Chey_30.0.0_google";
+  src: url("../../../fonts/Odor Mean Chey-Regular_30.0.0_google.ttf");
+  font-weight: 400; 
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rowdies_17.0.0_google";
+  src: url("../../../fonts/Rowdies-Light_17.0.0_google.ttf");
+  font-weight: 300; 
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maname_1.0.0_google";
+  src: url("../../../fonts/Maname-Regular_1.0.0_google.ttf");
+  font-weight: 400; 
+  font-display: swap;
+}

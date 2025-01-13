@@ -1,0 +1,57 @@
+.alerts-container {
+  background-color: #fff4e5;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 auto;
+  max-width: 2000px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.alerts-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #d84315;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.alert-icon {
+  font-size: 35px;
+  margin-top: -15px;
+}
+
+.alert-list {
+  list-style: none;
+  padding: 0;
+}
+
+.alert-list li {
+  background-color: #fff8e1;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-message {
+  font-weight: bold;
+  color: #d84315;
+  font-size: 19px;
+}
+
+.alert-timestamp {
+  font-size: 18px;
+  color: #757575;
+  margin-left: 20px;
+}
